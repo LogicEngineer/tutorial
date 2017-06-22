@@ -1,0 +1,12 @@
+[
+{
+  "modid": "tutorial",
+  "name": "Joe's Tutorial Run Through",
+  "description": "A tutorial mod for Minecraft 1.11.2",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "authors": [ "LogicEngineer" ],
+  "credits": ""
+}
+]
