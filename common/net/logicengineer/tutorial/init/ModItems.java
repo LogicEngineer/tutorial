@@ -1,6 +1,9 @@
 package net.logicengineer.tutorial.init;
 
 import net.logicengineer.tutorial.Tutorial;
+import net.logicengineer.tutorial.item.ItemBase;
+import net.logicengineer.tutorial.item.ItemModelProvider;
+import net.logicengineer.tutorial.item.ItemOreDict;
 import net.logicengineer.tutorial.item.ItemTutorial;
 import net.logicengineer.tutorial.lib.Names;
 import net.minecraft.client.renderer.ItemModelMesher;
@@ -17,12 +20,16 @@ public class ModItems {
 	public static String INVENTORY = "inventory";
 
 	public static ItemTutorial tutorialItem;
+	public static ItemBase chasesItem;
 	public static ItemTutorial tutorialTestItem;
 
 	public static void init() {
 
 		tutorialItem = new ItemTutorial();
 		doRegisterItem(tutorialItem, Names.TUTORIAL_ITEM);
+		
+
+		chasesItem = register(new ItemBase(Names.CHASES_ITEM));
 		// Setting the registry name is how Forge tells items apart.
 		//tutorialItem.setRegistryName(new ResourceLocation(Tutorial.MOD_ID, Names.TUTORIAL_ITEM));
 		// Finally, register the item! Must be done AFTER setting the registry
@@ -52,8 +59,9 @@ public class ModItems {
 		// meta... In this case, there are no other variants, so we just pass in
 		// a metadata of zero.
 		// mesher.register(tutorialItem, 0, model);
-
-		doRegisterItemModel(tutorialItem, mesher, Names.TUTORIAL_ITEM, INVENTORY);
+		
+		doRegisterItemModel(tutorialItem, mesher, Names.TUTORIAL_ITEM, INVENTORY);	
+		doRegisterItemModel(chasesItem, mesher, Names.CHASES_ITEM, INVENTORY);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -72,4 +80,17 @@ public class ModItems {
 		item.setRegistryName(new ResourceLocation(Tutorial.MOD_ID, ITEM_NAMES_NAME));
 		GameRegistry.register(item);
 	}
+	
+	private static <T extends Item> T register(T item) {
+        GameRegistry.register(item);
+
+        if (item instanceof ItemModelProvider) {
+            ((ItemModelProvider)item).registerItemModel(item);
+        }
+        if (item instanceof ItemOreDict){
+            ((ItemOreDict)item).initOreDict();
+        }
+
+        return item;
+    }
 }

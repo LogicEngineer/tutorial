@@ -3,6 +3,7 @@ package net.logicengineer.tutorial;
 import java.util.Random;
 
 import net.logicengineer.tutorial.init.ModItems;
+import net.logicengineer.tutorial.recipes.ModRecipes;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -41,6 +42,7 @@ public class Tutorial {
 	@EventHandler
 	public void Init(FMLInitializationEvent event) {
 		proxy.init(event);
+		ModRecipes.init();
 	}
 
 	@EventHandler
