@@ -2,6 +2,7 @@ package net.logicengineer.tutorial;
 
 import java.util.Random;
 
+import net.logicengineer.tutorial.init.ModBlocks;
 import net.logicengineer.tutorial.init.ModItems;
 import net.logicengineer.tutorial.recipes.ModRecipes;
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,7 +14,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
 
 @Mod(modid = Tutorial.MOD_ID, name = Tutorial.MOD_NAME, version = Tutorial.VERSION, dependencies = Tutorial.DEPENDENCIES)
 public class Tutorial {
@@ -36,18 +36,19 @@ public class Tutorial {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit(event);
+		System.out.println(MOD_NAME + " is loading!");
+		ModBlocks.init();
+		ModItems.init();
 	}
 
 	@EventHandler
 	public void Init(FMLInitializationEvent event) {
-		proxy.init(event);
 		ModRecipes.init();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		proxy.postInit(event);
+
 	}
 
 	public static CreativeTabs tabTutorial = new CreativeTabs(Tutorial.RESOURCE_PREFIX + "creative_tab") {

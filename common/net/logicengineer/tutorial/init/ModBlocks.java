@@ -19,8 +19,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModBlocks {
-
-	public static String INVENTORY = "inventory";
 	
 	public static BlockTutorial tutorialBlock;
 	public static BlockBase chasesBlock;
@@ -31,51 +29,11 @@ public class ModBlocks {
 	 */
 	public static void init() {
 
-		tutorialBlock = new BlockTutorial();
-		doRegisterBlock(tutorialBlock, Names.TUTORIAL_BLOCK);
+		tutorialBlock = register(new BlockTutorial(Material.IRON, Names.TUTORIAL_BLOCK));
 		
 		chasesBlock = register(new BlockBase(Material.IRON, Names.CHASES_BLOCK));
 		
-	}
-
-	/**
-	 * Here we should call the addRecipes method for all blocks that have one.
-	 * Should be called during the init phase.
-	 */
-	public static void initRecipes() {
-
-		 tutorialBlock.addRecipes();
-	}
-
-	/**
-	 * The client-side initializer. Here we handle model registration. Don't
-	 * forget the @SideOnly annotation! This should be called during init.
-	 */
-	@SideOnly(Side.CLIENT)
-	public static void initClient(ItemModelMesher mesher) {
-
-		doRegisterBlockModel(tutorialBlock, mesher, Names.TUTORIAL_BLOCK, INVENTORY);
-	}
-
-	@SideOnly(Side.CLIENT)
-	private static void doRegisterBlockModel(Block block, ItemModelMesher mesher, String BLOCK_NAMES_NAME,
-			String MODEL_VIEW_LOCATION) {
-
-		Item item = Item.getItemFromBlock(block);
-
-		ModelResourceLocation model = new ModelResourceLocation(Tutorial.RESOURCE_PREFIX + BLOCK_NAMES_NAME,
-				MODEL_VIEW_LOCATION);
-		ModelLoader.registerItemVariants(item, model);
-		mesher.register(item, 0, model);
-	}
-
-	@SideOnly(Side.CLIENT)
-	private static void doRegisterBlock(Block block, String BLOCK_NAMES_NAME) {
-
-		ResourceLocation location = new ResourceLocation(Tutorial.MOD_ID, BLOCK_NAMES_NAME);
-		block.setRegistryName(location);
-		GameRegistry.register(block);
-		GameRegistry.register(new ItemBlock(block), location);
+		
 	}
 	
 	private static <T extends Block> T register(T block, ItemBlock itemBlock) {
