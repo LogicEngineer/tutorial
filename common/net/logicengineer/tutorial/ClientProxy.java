@@ -25,11 +25,8 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void init(FMLInitializationEvent event) {
-		super.init(event);
-		
-		ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-
-		
+		super.init(event);		
+		ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();		
 		ModItems.initClient(mesher);
 		ModBlocks.initClient(mesher);
 	}

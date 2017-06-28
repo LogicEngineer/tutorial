@@ -1,11 +1,11 @@
 # Blocks
 
 tile.tutorial:tutorial_block.name=Tutorial Block
-
+tile.chases_block.name=Chase's Block
 # Items
 
 item.tutorial:tutorial_item.name=Tutorial Item
-item.tutorial:chases_item.name=Chase's Item
+item.chases_item.name=Chase's Item
 #item.tutorial:pickaxe.name=Tutorial Pickaxe
 
 # Creative Tab

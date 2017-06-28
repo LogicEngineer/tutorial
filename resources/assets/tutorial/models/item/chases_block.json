@@ -1,0 +1,6 @@
+{
+  "parent": "tutorial:block/chases_block",
+  "textures": {
+    "layer0": "tutorial:blocks/chases_block"
+  }
+}

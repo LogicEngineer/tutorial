@@ -9,5 +9,6 @@ public class Names {
 	
 	
 	public static final String TUTORIAL_BLOCK = "tutorial_block";
+	public static final String CHASES_BLOCK = "chases_block";
 
 }
